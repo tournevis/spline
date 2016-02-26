@@ -23,6 +23,8 @@ export default class Webgl {
     this.cube = new Cube();
     this.cube.position.set(0, 0, 0);
     this.scene.add(this.cube);
+
+    
   }
 
   initPostprocessing() {
