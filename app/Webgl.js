@@ -1,6 +1,7 @@
 import THREE from 'three';
 window.THREE = THREE;
 import Cube from './objects/Cube';
+import Spline from './objects/spline';
 
 export default class Webgl {
   constructor(width, height) {
@@ -10,8 +11,8 @@ export default class Webgl {
 
     this.scene = new THREE.Scene();
 
-    this.camera = new THREE.PerspectiveCamera(50, width / height, 1, 1000);
-    this.camera.position.z = 100;
+    this.camera = new THREE.PerspectiveCamera(40, width / height, 1, 1000);
+    this.camera.position.z = 80;
 
     this.renderer = new THREE.WebGLRenderer();
     this.renderer.setSize(width, height);
@@ -21,10 +22,13 @@ export default class Webgl {
     this.initPostprocessing();
 
     this.cube = new Cube();
+    this.spline = new Spline();
     this.cube.position.set(0, 0, 0);
+    this.spline.position.set(0, 0, 0);
     this.scene.add(this.cube);
+    this.scene.add(this.spline);
 
-    
+
   }
 
   initPostprocessing() {
@@ -43,14 +47,18 @@ export default class Webgl {
 
     this.renderer.setSize(width, height);
   }
-
+  sendSoundData(data){
+  //  console.log(data);
+    this.spline.soundData(data);
+  }
   render() {
     if (this.params.usePostprocessing) {
       console.warn('WebGL - No effect composer set.');
     } else {
       this.renderer.render(this.scene, this.camera);
     }
-
+    this.spline.update();
     this.cube.update();
   }
+
 }

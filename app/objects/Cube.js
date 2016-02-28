@@ -9,12 +9,14 @@ export default class Cube extends THREE.Object3D {
       color: 0x00ff00,
       wireframe: true,
     });
-    this.mesh = new THREE.Mesh(this.geom, this.mat);
 
+    this.mesh = new THREE.Mesh(this.geom, this.mat);
+    console.log(this.mesh);
     this.add(this.mesh);
   }
 
   update() {
+      //this.geom.verticesNeedUpdate = true;
     this.rotation.x += 0.01;
     this.rotation.z += 0.01;
   }

@@ -38,6 +38,7 @@ export default class sound{
     this.dataBuffer = this.analyseur.frequencyBinCount;
     this.space = window.innerWidth / this.dataBuffer;
     this.analyseur.getByteTimeDomainData(this.dataArray);
+
     return this.dataArray ;
   }
 }

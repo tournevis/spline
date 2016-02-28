@@ -19,6 +19,7 @@ sound.loadSound("tab-anitek-opaque.mp3")
 gui = new dat.GUI();
 gui.add(webgl.params, 'usePostprocessing');
 
+
 // handle resize
 window.addEventListener('resize', resizeHandler);
 
@@ -32,6 +33,8 @@ function resizeHandler() {
 function animate() {
   raf(animate);
   //console.log(sound.getData());
-  sound.getData();
+   var soundArray = sound.getData();
+  webgl.sendSoundData(soundArray);
+
   webgl.render();
 }
