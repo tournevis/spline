@@ -11,7 +11,6 @@ export default class Cube extends THREE.Object3D {
     });
 
     this.mesh = new THREE.Mesh(this.geom, this.mat);
-    console.log(this.mesh);
     this.add(this.mesh);
   }
 
